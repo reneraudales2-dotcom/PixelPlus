@@ -363,6 +363,10 @@
       text-transform: uppercase;
     }
 
+    .collage-piece { overflow: hidden; }
+    .collage-piece img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .collage-piece:has(img) .mono-tag { display: none; }
+
     .collage-piece.p1 .mono-tag, .collage-piece.p2 .mono-tag { color: var(--color-paper-white); }
 
     /* Hero Floating Card: white surface, 16px radius, 24px padding, shadow-xl, NO border */
@@ -715,20 +719,23 @@
     <section class="hero-section">
       <!-- Collage con productos reales de la cuenta -->
       <div class="hero-collage" aria-hidden="true">
-        <div class="decorative-ring"></div>
         <div class="collage-piece p1">
+          <img src="img/banner-roll-up.jpg" alt="Banner roll up" onerror="this.remove()">
           <span class="mono-tag">Banner roll up</span>
           <span class="mono-tag">L1,250 + ISV</span>
         </div>
         <div class="collage-piece p2">
+          <img src="img/letrero-acera.jpg" alt="Letrero de acera" onerror="this.remove()">
           <span class="mono-tag">Letrero de acera</span>
           <span class="mono-tag">20.5 × 34.5 pulg.</span>
         </div>
         <div class="collage-piece p3">
+          <img src="img/gondola.jpg" alt="Góndola promocional" onerror="this.remove()">
           <span class="mono-tag">Góndola promocional</span>
           <span class="mono-tag">1.50 × 1 × 0.40 m</span>
         </div>
         <div class="collage-piece p4">
+          <img src="img/tazas.jpg" alt="Tazas con grabado UV-DTF" onerror="this.remove()">
           <span class="mono-tag">Tazas UV-DTF</span>
           <span class="mono-tag">Con tu logo</span>
         </div>
@@ -882,10 +889,10 @@
      * puedes reemplazar este arreglo haciendo fetch('posts.json').
      */
     const instagramPosts = [
-      { id: "1", title: "Banner roll up", caption: "Banner roll up en precio promo. Consulta también por banners sueltos, con estructura araña o roll-up.", category: "banners", detail: "L1,250 + ISV", tint: "#f6c9bb", code: "Banners", imageUrl: "", permalink: "https://www.instagram.com/p/DXXBmuHCO50/" },
-      { id: "2", title: "Tazas con grabado UV-DTF", caption: "Tazas personalizadas con tu logo, con impresión con relieve.", category: "promocionales", detail: "Con tu logo", tint: "#f7efe9", code: "Promocionales", imageUrl: "", permalink: "https://www.instagram.com/p/DeSMGUEoEX0/" },
-      { id: "3", title: "Góndola promocional", caption: "Góndola para exhibir tus productos en punto de venta. Dimensiones de estructura: 1.50 m x 1 m x 0.40 m.", category: "pop", detail: "1.50 × 1 × 0.40 m", tint: "#ffd9a8", code: "Material POP", imageUrl: "", permalink: "https://www.instagram.com/p/DbTQRoOIGfy/" },
-      { id: "4", title: "Letrero metálico de acera", caption: "Estructura metálica con bisagras y dos artes impresos sobre PVC. Dimensiones de arte: 20.5 x 34.5 pulg.", category: "rotulacion", detail: "L1,150 precio promo", tint: "#cfe0f3", code: "Rotulación", imageUrl: "", permalink: "https://www.instagram.com/p/DbGqy-Nom6x/" },
+      { id: "1", title: "Banner roll up", caption: "Banner roll up en precio promo. Consulta también por banners sueltos, con estructura araña o roll-up.", category: "banners", detail: "L1,250 + ISV", tint: "#f6c9bb", code: "Banners", imageUrl: "img/banner-roll-up.jpg", permalink: "https://www.instagram.com/p/DXXBmuHCO50/" },
+      { id: "2", title: "Tazas con grabado UV-DTF", caption: "Tazas personalizadas con tu logo, con impresión con relieve.", category: "promocionales", detail: "Con tu logo", tint: "#f7efe9", code: "Promocionales", imageUrl: "img/tazas.jpg", permalink: "https://www.instagram.com/p/DeSMGUEoEX0/" },
+      { id: "3", title: "Góndola promocional", caption: "Góndola para exhibir tus productos en punto de venta. Dimensiones de estructura: 1.50 m x 1 m x 0.40 m.", category: "pop", detail: "1.50 × 1 × 0.40 m", tint: "#ffd9a8", code: "Material POP", imageUrl: "img/gondola.jpg", permalink: "https://www.instagram.com/p/DbTQRoOIGfy/" },
+      { id: "4", title: "Letrero metálico de acera", caption: "Estructura metálica con bisagras y dos artes impresos sobre PVC. Dimensiones de arte: 20.5 x 34.5 pulg.", category: "rotulacion", detail: "L1,150 precio promo", tint: "#cfe0f3", code: "Rotulación", imageUrl: "img/letrero-acera.jpg", permalink: "https://www.instagram.com/p/DbGqy-Nom6x/" },
       { id: "5", title: "Banner mini", caption: "Banner mini de 25 cm x 40 cm. Consulta también por banners sueltos, con estructura araña o roll-up.", category: "banners", detail: "25 × 40 cm · L370 + ISV", tint: "#f6c9bb", code: "Banners", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" },
       { id: "6", title: "Banner araña", caption: "Banner con estructura araña en precio promo.", category: "banners", detail: "L1,000 + ISV", tint: "#f6c9bb", code: "Banners", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" },
       { id: "7", title: "PVC y coroplast", caption: "Rotulación y señalización, table tents, menús, placas, cuadros y medidor de altura infantil.", category: "rotulacion", detail: "Rotulación y señalización", tint: "#cfe0f3", code: "Rotulación", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" },
@@ -911,7 +918,7 @@
           <div class="card-thumb" style="background-color: ${post.tint};">
             ${
               post.imageUrl
-                ? `<img src="${post.imageUrl}" alt="${post.title}" loading="lazy">`
+                ? `<img src="${post.imageUrl}" alt="${post.title}" loading="lazy" onerror="this.remove()">`
                 : `<span class="mono-tag">${post.code}</span>`
             }
           </div>
@@ -938,7 +945,7 @@
       const preview = document.getElementById('modal-preview');
       preview.style.backgroundColor = post.tint;
       preview.innerHTML = post.imageUrl
-        ? `<img src="${post.imageUrl}" alt="${post.title}">`
+        ? `<img src="${post.imageUrl}" alt="${post.title}" onerror="this.remove()">`
         : `<span class="mono-tag">${post.code}</span>`;
       modal.classList.add('open');
     }
