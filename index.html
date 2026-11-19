@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pixel Plus — Imprime tu futuro | Tegucigalpa, Honduras</title>
+  <link rel="icon" href="img/PP.jpg.jpeg">
   <meta name="description" content="Instalación de material POP, impresión digital, góndolas, señalética y rotulación, y diseño gráfico en Tegucigalpa, Honduras.">
   <!-- Fuentes de respaldo (Inter & JetBrains Mono) según especificación -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -122,7 +123,16 @@
       text-decoration: none;
     }
 
+    .brand-mark img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     :focus-visible { outline: 2px solid var(--color-navy); outline-offset: 2px; }
+
+    .clients-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 32px; }
+    .client-logo { aspect-ratio: 3 / 2; border: 1px solid var(--color-soft-mist); border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 16px; font-family: var(--font-figmamono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-graphite); text-align: center; }
+    .client-logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(1); opacity: 0.75; transition: filter .2s, opacity .2s; }
+    .client-logo:hover img { filter: none; opacity: 1; }
+    .client-logo.placeholder { border-style: dashed; color: #9a9a9a; }
+    @media (max-width: 900px) { .clients-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 560px) { .clients-grid { grid-template-columns: repeat(2, 1fr); } }
 
     /* Container */
     .container {
@@ -163,7 +173,7 @@
     }
 
     /* Marca: círculo terracota del perfil de Instagram (cambia por el logo real con <img>) */
-    .brand-mark {
+    .brand-mark { position: relative; overflow: hidden;
       width: 28px;
       height: 28px;
       border-radius: 50%;
@@ -697,13 +707,14 @@
   <header class="navbar">
     <div class="nav-inner">
       <a href="#" class="brand">
-        <span class="brand-mark" aria-hidden="true">P+</span>
+        <span class="brand-mark" aria-hidden="true">P+<img src="img/PP.jpg.jpeg" alt="" onerror="this.remove()"></span>
         <span>Pixel Plus</span>
       </a>
 
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#feed">Trabajos</a>
         <a href="#estudio">Servicios</a>
+        <a href="#clientes">Clientes</a>
         <a href="#contacto">Contacto</a>
       </nav>
 
@@ -759,11 +770,11 @@
     <section id="feed" class="section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-headline">Nuestros trabajos</h2>
+          <h2 class="section-headline">Productos y trabajos</h2>
           <div class="filter-bar" role="tablist" aria-label="Filtrar trabajos">
             <button class="chip active" data-filter="all">Todos</button>
-            <button class="chip" data-filter="banners">Banners</button>
-            <button class="chip" data-filter="rotulacion">Rotulación</button>
+            <button class="chip" data-filter="banners">Banners y backdrops</button>
+            <button class="chip" data-filter="rotulacion">Señalética y rotulación</button>
             <button class="chip" data-filter="pop">Material POP</button>
             <button class="chip" data-filter="promocionales">Promocionales</button>
           </div>
@@ -823,6 +834,15 @@
       </div>
     </section>
 
+    <!-- Clientes -->
+    <section id="clientes" class="section">
+      <div class="container">
+        <span class="hero-eyebrow">Confían en nosotros</span>
+        <h2 class="section-headline">Nuestros clientes</h2>
+        <div id="clients-grid" class="clients-grid"></div>
+      </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contacto" class="section">
       <div class="container">
@@ -849,7 +869,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="brand">
-        <span class="brand-mark" aria-hidden="true">P+</span>
+        <span class="brand-mark" aria-hidden="true">P+<img src="img/PP.jpg.jpeg" alt="" onerror="this.remove()"></span>
         <span>Pixel Plus</span>
       </div>
 
@@ -857,6 +877,7 @@
         <a href="https://www.instagram.com/pixelplushn/" target="_blank" rel="noopener">Instagram</a>
         <a href="#feed">Trabajos</a>
         <a href="#estudio">Servicios</a>
+        <a href="#clientes">Clientes</a>
       </div>
 
       <span class="mono-tag">&copy; 2026 Pixel Plus, Tegucigalpa, Honduras</span>
@@ -889,19 +910,41 @@
      * puedes reemplazar este arreglo haciendo fetch('posts.json').
      */
     const instagramPosts = [
-      { id: "1", title: "Banner roll up", caption: "Banner roll up en precio promo. Consulta también por banners sueltos, con estructura araña o roll-up.", category: "banners", detail: "L1,250 + ISV", tint: "#f6c9bb", code: "Banners", imageUrl: "img/banner-roll-up.jpg", permalink: "https://www.instagram.com/p/DXXBmuHCO50/" },
-      { id: "2", title: "Tazas con grabado UV-DTF", caption: "Tazas personalizadas con tu logo, con impresión con relieve.", category: "promocionales", detail: "Con tu logo", tint: "#f7efe9", code: "Promocionales", imageUrl: "img/tazas.jpg", permalink: "https://www.instagram.com/p/DeSMGUEoEX0/" },
-      { id: "3", title: "Góndola promocional", caption: "Góndola para exhibir tus productos en punto de venta. Dimensiones de estructura: 1.50 m x 1 m x 0.40 m.", category: "pop", detail: "1.50 × 1 × 0.40 m", tint: "#ffd9a8", code: "Material POP", imageUrl: "img/gondola.jpg", permalink: "https://www.instagram.com/p/DbTQRoOIGfy/" },
-      { id: "4", title: "Letrero metálico de acera", caption: "Estructura metálica con bisagras y dos artes impresos sobre PVC. Dimensiones de arte: 20.5 x 34.5 pulg.", category: "rotulacion", detail: "L1,150 precio promo", tint: "#cfe0f3", code: "Rotulación", imageUrl: "img/letrero-acera.jpg", permalink: "https://www.instagram.com/p/DbGqy-Nom6x/" },
-      { id: "5", title: "Banner mini", caption: "Banner mini de 25 cm x 40 cm. Consulta también por banners sueltos, con estructura araña o roll-up.", category: "banners", detail: "25 × 40 cm · L370 + ISV", tint: "#f6c9bb", code: "Banners", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" },
-      { id: "6", title: "Banner araña", caption: "Banner con estructura araña en precio promo.", category: "banners", detail: "L1,000 + ISV", tint: "#f6c9bb", code: "Banners", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" },
-      { id: "7", title: "PVC y coroplast", caption: "Rotulación y señalización, table tents, menús, placas, cuadros y medidor de altura infantil.", category: "rotulacion", detail: "Rotulación y señalización", tint: "#cfe0f3", code: "Rotulación", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" },
-      { id: "8", title: "Backlit para cajas de luz", caption: "Acabado mate, colores vibrantes y sin reflejos molestos.", category: "rotulacion", detail: "Para cajas de luz", tint: "#cfe0f3", code: "Rotulación", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" },
-      { id: "9", title: "Mesa de degustación", caption: "Mesa de degustación personalizada con tu logo.", category: "pop", detail: "Con tu logo", tint: "#ffd9a8", code: "Material POP", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" },
-      { id: "10", title: "Árbol ecológico de MDF", caption: "Pedido especial de un cliente: árbol ecológico de MDF de 2.00 m x 1.40 m.", category: "pop", detail: "2.00 × 1.40 m", tint: "#ffd9a8", code: "Material POP", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" },
-      { id: "11", title: "Pelotas antiestrés", caption: "Pelotas antiestrés personalizadas con tu logo. Tamaño: 2.48 pulgadas. Pedido mínimo 100 unidades.", category: "promocionales", detail: "Pedido mínimo 100", tint: "#f7efe9", code: "Promocionales", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" },
-      { id: "12", title: "Stickers troquelados", caption: "Elige tu forma y diseña a tu manera. Consulta también por stickers de gran formato, laminados u holográficos.", category: "promocionales", detail: "Elige tu forma", tint: "#f7efe9", code: "Promocionales", imageUrl: "", permalink: "https://www.instagram.com/pixelplushn/" }
+      {"id": "1", "title": "Banner roll up", "caption": "Banner roll up en precio promo. Consulta también por banners sueltos, con estructura araña o roll-up.", "category": "banners", "detail": "L1,250 + ISV", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "img/banner-roll-up.jpg", "permalink": "https://www.instagram.com/p/DXXBmuHCO50/"},
+      {"id": "2", "title": "Tazas con grabado UV-DTF", "caption": "Tazas personalizadas con tu logo, con impresión con relieve.", "category": "promocionales", "detail": "Con tu logo", "tint": "#f7efe9", "code": "Promocionales", "imageUrl": "img/tazas.jpg", "permalink": "https://www.instagram.com/p/DeSMGUEoEX0/"},
+      {"id": "3", "title": "Góndola promocional", "caption": "Góndola para exhibir tus productos en punto de venta. Dimensiones de estructura: 1.50 m x 1 m x 0.40 m.", "category": "pop", "detail": "1.50 × 1 × 0.40 m", "tint": "#ffd9a8", "code": "Material POP", "imageUrl": "img/gondola.jpg", "permalink": "https://www.instagram.com/p/DbTQRoOIGfy/"},
+      {"id": "4", "title": "Letrero metálico de acera", "caption": "Estructura metálica con bisagras y dos artes impresos sobre PVC. Dimensiones de arte: 20.5 x 34.5 pulg.", "category": "rotulacion", "detail": "L1,150 precio promo", "tint": "#cfe0f3", "code": "Señalética y rotulación", "imageUrl": "img/letrero-acera.jpg", "permalink": "https://www.instagram.com/p/DbGqy-Nom6x/"},
+      {"id": "5", "title": "Banner mini", "caption": "Banner mini de 25 cm x 40 cm. Consulta también por banners sueltos, con estructura araña o roll-up.", "category": "banners", "detail": "25 × 40 cm · L370 + ISV", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "img/mini-banner.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "6", "title": "Banner araña", "caption": "Banner con estructura araña en precio promo.", "category": "banners", "detail": "L1,000 + ISV", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "7", "title": "Backdrop", "caption": "Estructura backdrop para eventos y marcas: alto impacto visual, fondos limpios para fotografía y montaje rápido.", "category": "banners", "detail": "Portátil y de montaje rápido", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "8", "title": "PVC y coroplast", "caption": "Rotulación y señalización, table tents, menús, placas, cuadros y medidor de altura infantil.", "category": "rotulacion", "detail": "Rotulación y señalización", "tint": "#cfe0f3", "code": "Señalética y rotulación", "imageUrl": "img/pvc-coroplast.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "9", "title": "Backlit para cajas de luz", "caption": "Acabado mate, colores vibrantes y sin reflejos molestos.", "category": "rotulacion", "detail": "Para cajas de luz", "tint": "#cfe0f3", "code": "Señalética y rotulación", "imageUrl": "img/backlit.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "10", "title": "Polarizado y microperforado", "caption": "Película para vidrios que reduce el calor solar y el deslumbramiento, y permite la visibilidad interior y exterior.", "category": "rotulacion", "detail": "Aplicación en vidrios", "tint": "#cfe0f3", "code": "Señalética y rotulación", "imageUrl": "", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "11", "title": "Tótem de coroplast", "caption": "Tótem de coroplast de 0.40 m x 1.65 m para promocionar tu marca.", "category": "rotulacion", "detail": "0.40 × 1.65 m", "tint": "#cfe0f3", "code": "Señalética y rotulación", "imageUrl": "img/totems.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "12", "title": "Señalética y rotulación", "caption": "Rotulación de alta calidad y durabilidad para negocios, oficinas y proyectos.", "category": "rotulacion", "detail": "Alta calidad y durabilidad", "tint": "#cfe0f3", "code": "Señalética y rotulación", "imageUrl": "img/letreros-acera.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "13", "title": "Mesa de degustación", "caption": "Mesa de degustación personalizada con tu logo.", "category": "pop", "detail": "Con tu logo", "tint": "#ffd9a8", "code": "Material POP", "imageUrl": "img/mesa-degustadora.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "14", "title": "Árbol ecológico de MDF", "caption": "Pedido especial de un cliente: árbol ecológico de MDF de 2.00 m x 1.40 m.", "category": "pop", "detail": "2.00 × 1.40 m", "tint": "#ffd9a8", "code": "Material POP", "imageUrl": "", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "15", "title": "Material POP", "caption": "Instalación de material POP en punto de venta: góndolas y exhibidores para destacar tus productos.", "category": "pop", "detail": "Góndolas y exhibidores", "tint": "#ffd9a8", "code": "Material POP", "imageUrl": "img/gondolas.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "16", "title": "Pelotas antiestrés", "caption": "Pelotas antiestrés personalizadas con tu logo. Tamaño: 2.48 pulgadas. Pedido mínimo 100 unidades.", "category": "promocionales", "detail": "Pedido mínimo 100", "tint": "#f7efe9", "code": "Promocionales", "imageUrl": "img/pelotas-anti-estres.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "17", "title": "Stickers troquelados", "caption": "Elige tu forma y diseña a tu manera. Consulta también por stickers de gran formato, laminados u holográficos.", "category": "promocionales", "detail": "Elige tu forma", "tint": "#f7efe9", "code": "Promocionales", "imageUrl": "img/stickers-troquelados.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "18", "title": "Stickers holográficos", "caption": "Stickers holográficos para darle un acabado distintivo a tu marca.", "category": "promocionales", "detail": "Con tu diseño", "tint": "#f7efe9", "code": "Promocionales", "imageUrl": "img/stickers-holograficos.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "19", "title": "Stickers personalizados", "caption": "Personaliza tus stickers para tus productos. Puedes plastificarlos.", "category": "promocionales", "detail": "Con tu diseño", "tint": "#f7efe9", "code": "Promocionales", "imageUrl": "img/stickers.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "20", "title": "Vinil DTF", "caption": "Vinil DTF para personalizar tus productos con tu logo o diseño.", "category": "promocionales", "detail": "Con tu logo", "tint": "#f7efe9", "code": "Promocionales", "imageUrl": "img/vinil-dtf.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"}
     ];
+
+    /* Clientes: agrega el logo en img/clientes/ y escribe su ruta en "logo". Sin logo se muestra el nombre. */
+    const clients = [
+      { name: "Ceteco", logo: "img/clientes/ceteco.png" },
+      { name: "Tu logo aquí", logo: "", placeholder: true },
+      { name: "Tu logo aquí", logo: "", placeholder: true },
+      { name: "Tu logo aquí", logo: "", placeholder: true },
+      { name: "Tu logo aquí", logo: "", placeholder: true },
+      { name: "Tu logo aquí", logo: "", placeholder: true }
+    ];
+    document.getElementById('clients-grid').innerHTML = clients.map(c => `
+      <div class="client-logo${c.placeholder ? ' placeholder' : ''}">
+        ${c.logo ? `<img src="${c.logo}" alt="${c.name}" onerror="this.outerHTML='${c.name}'">` : c.name}
+      </div>`).join('');
 
     const gridEl = document.getElementById('instagram-grid');
     const chips = document.querySelectorAll('.chip');
@@ -918,7 +961,7 @@
           <div class="card-thumb" style="background-color: ${post.tint};">
             ${
               post.imageUrl
-                ? `<img src="${post.imageUrl}" alt="${post.title}" loading="lazy" onerror="this.remove()">`
+                ? `<img src="${post.imageUrl}" alt="${post.title}" loading="lazy" onerror="this.outerHTML='<span class=&quot;mono-tag&quot;>${post.code}</span>'">`
                 : `<span class="mono-tag">${post.code}</span>`
             }
           </div>
