@@ -173,6 +173,9 @@
     }
 
     /* Marca: círculo terracota del perfil de Instagram (cambia por el logo real con <img>) */
+    .brand-text { display: inline-flex; align-items: center; }
+    .brand-text img { height: 20px; width: auto; display: block; }
+    .brand-text:has(img) .brand-name { display: none; }
     .brand-mark { position: relative; overflow: hidden;
       width: 28px;
       height: 28px;
@@ -710,7 +713,7 @@
     <div class="nav-inner">
       <a href="#" class="brand">
         <span class="brand-mark" aria-hidden="true">P+<img src="img/PP.jpg.jpeg" alt="" onerror="this.remove()"></span>
-        <span>Pixel Plus</span>
+        <span class="brand-text"><img src="img/logo-texto.png" alt="Pixel Plus" onerror="this.remove()"><span class="brand-name">Pixel Plus</span></span>
       </a>
 
       <nav class="nav-links" aria-label="Navegación principal">
@@ -871,7 +874,7 @@
     <div class="container footer-inner">
       <div class="brand">
         <span class="brand-mark" aria-hidden="true">P+<img src="img/PP.jpg.jpeg" alt="" onerror="this.remove()"></span>
-        <span>Pixel Plus</span>
+        <span class="brand-text"><img src="img/logo-texto.png" alt="Pixel Plus" onerror="this.remove()"><span class="brand-name">Pixel Plus</span></span>
       </div>
 
       <div class="footer-links">
