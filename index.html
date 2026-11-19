@@ -501,7 +501,7 @@
 
     .card-thumb {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 4 / 5;
       border-radius: var(--radius-2xl); /* 16px */
       overflow: hidden;
       margin-bottom: var(--spacing-12);
@@ -514,7 +514,7 @@
     .card-thumb img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
 
@@ -733,7 +733,7 @@
         <div class="collage-piece p1">
           <img src="img/banner-roll-up.jpg" alt="Banner roll up" onerror="this.remove()">
           <span class="mono-tag">Banner roll up</span>
-          <span class="mono-tag">L1,250 + ISV</span>
+          <span class="mono-tag">Estructura roll up</span>
         </div>
         <div class="collage-piece p2">
           <img src="img/letrero-acera.jpg" alt="Letrero de acera" onerror="this.remove()">
@@ -852,9 +852,8 @@
             <h2 class="section-headline" style="font-size: 40px;">Cotiza tu proyecto.</h2>
           </div>
           <div class="hero-cta-group">
-            <!-- TODO: reemplaza 50400000000 por el WhatsApp real de Pixel Plus -->
-            <a href="https://wa.me/50400000000?text=Hola%20Pixel%20Plus,%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener" class="btn-pill">
-              Escribir por WhatsApp
+            <a href="https://wa.me/50495282257?text=Hola%20Pixel%20Plus,%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener" class="btn-pill">
+              WhatsApp +504 9528-2257
             </a>
             <a href="https://www.instagram.com/pixelplushn/" target="_blank" rel="noopener" class="btn-ghost">
               Escribir por Instagram
@@ -894,7 +893,7 @@
         </div>
         <button id="close-modal" class="btn-ghost" style="padding: 4px 12px;">Cerrar</button>
       </div>
-      <div id="modal-preview" class="card-thumb" style="aspect-ratio: 16 / 10; margin-bottom: 16px;"></div>
+      <div id="modal-preview" class="card-thumb" style="aspect-ratio: 4 / 5; max-height: 60vh; margin-bottom: 16px;"></div>
       <h3 id="modal-title" class="card-title" style="font-size: 20px;"></h3>
       <p id="modal-caption" style="color: var(--color-graphite); margin-bottom: 20px;"></p>
       <a id="modal-link" href="https://www.instagram.com/pixelplushn/" target="_blank" rel="noopener" class="btn-pill" style="width: 100%;">
@@ -910,12 +909,12 @@
      * puedes reemplazar este arreglo haciendo fetch('posts.json').
      */
     const instagramPosts = [
-      {"id": "1", "title": "Banner roll up", "caption": "Banner roll up en precio promo. Consulta también por banners sueltos, con estructura araña o roll-up.", "category": "banners", "detail": "L1,250 + ISV", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "img/banner-roll-up.jpg", "permalink": "https://www.instagram.com/p/DXXBmuHCO50/"},
+      {"id": "1", "title": "Banner roll up", "caption": "Banner roll up para exhibir tu marca. Consulta también por banners sueltos, con estructura araña o roll-up.", "category": "banners", "detail": "Estructura roll up", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "img/banner-roll-up.jpg", "permalink": "https://www.instagram.com/p/DXXBmuHCO50/"},
       {"id": "2", "title": "Tazas con grabado UV-DTF", "caption": "Tazas personalizadas con tu logo, con impresión con relieve.", "category": "promocionales", "detail": "Con tu logo", "tint": "#f7efe9", "code": "Promocionales", "imageUrl": "img/tazas.jpg", "permalink": "https://www.instagram.com/p/DeSMGUEoEX0/"},
       {"id": "3", "title": "Góndola promocional", "caption": "Góndola para exhibir tus productos en punto de venta. Dimensiones de estructura: 1.50 m x 1 m x 0.40 m.", "category": "pop", "detail": "1.50 × 1 × 0.40 m", "tint": "#ffd9a8", "code": "Material POP", "imageUrl": "img/gondola.jpg", "permalink": "https://www.instagram.com/p/DbTQRoOIGfy/"},
-      {"id": "4", "title": "Letrero metálico de acera", "caption": "Estructura metálica con bisagras y dos artes impresos sobre PVC. Dimensiones de arte: 20.5 x 34.5 pulg.", "category": "rotulacion", "detail": "L1,150 precio promo", "tint": "#cfe0f3", "code": "Señalética y rotulación", "imageUrl": "img/letrero-acera.jpg", "permalink": "https://www.instagram.com/p/DbGqy-Nom6x/"},
-      {"id": "5", "title": "Banner mini", "caption": "Banner mini de 25 cm x 40 cm. Consulta también por banners sueltos, con estructura araña o roll-up.", "category": "banners", "detail": "25 × 40 cm · L370 + ISV", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "img/mini-banner.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
-      {"id": "6", "title": "Banner araña", "caption": "Banner con estructura araña en precio promo.", "category": "banners", "detail": "L1,000 + ISV", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "4", "title": "Letrero metálico de acera", "caption": "Estructura metálica con bisagras y dos artes impresos sobre PVC. Dimensiones de arte: 20.5 x 34.5 pulg.", "category": "rotulacion", "detail": "Arte de 20.5 × 34.5 pulg.", "tint": "#cfe0f3", "code": "Señalética y rotulación", "imageUrl": "img/letrero-acera.jpg", "permalink": "https://www.instagram.com/p/DbGqy-Nom6x/"},
+      {"id": "5", "title": "Banner mini", "caption": "Banner mini de 25 cm x 40 cm. Consulta también por banners sueltos, con estructura araña o roll-up.", "category": "banners", "detail": "25 × 40 cm", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "img/mini-banner.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
+      {"id": "6", "title": "Banner araña", "caption": "Banner con estructura araña para exhibir tu marca. Consulta también por banners sueltos o roll-up.", "category": "banners", "detail": "Estructura araña", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "", "permalink": "https://www.instagram.com/pixelplushn/"},
       {"id": "7", "title": "Backdrop", "caption": "Estructura backdrop para eventos y marcas: alto impacto visual, fondos limpios para fotografía y montaje rápido.", "category": "banners", "detail": "Portátil y de montaje rápido", "tint": "#f6c9bb", "code": "Banners y backdrops", "imageUrl": "", "permalink": "https://www.instagram.com/pixelplushn/"},
       {"id": "8", "title": "PVC y coroplast", "caption": "Rotulación y señalización, table tents, menús, placas, cuadros y medidor de altura infantil.", "category": "rotulacion", "detail": "Rotulación y señalización", "tint": "#cfe0f3", "code": "Señalética y rotulación", "imageUrl": "img/pvc-coroplast.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
       {"id": "9", "title": "Backlit para cajas de luz", "caption": "Acabado mate, colores vibrantes y sin reflejos molestos.", "category": "rotulacion", "detail": "Para cajas de luz", "tint": "#cfe0f3", "code": "Señalética y rotulación", "imageUrl": "img/backlit.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"},
