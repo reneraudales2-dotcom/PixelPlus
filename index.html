@@ -287,7 +287,6 @@
     /* Hero Section with 2D-scattered collage behind centered floating card */
     .hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 40%; display: block; }
-    .hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.40), rgba(255,255,255,.20)); }
 
     .hero-section {
       position: relative;
@@ -325,14 +324,12 @@
       .hero-section { align-items: flex-end; min-height: 700px; padding: 0 16px 32px; }
       .hero-bg { bottom: auto; height: 440px; -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent); mask-image: linear-gradient(to bottom, #000 72%, transparent); }
       .hero-bg img { object-position: 34% 25%; }
-      .hero-bg::after { background: linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.05)); }
     }
 
     @media (min-width: 961px) {
       .hero-section { justify-content: flex-end; padding-right: 64px; }
       .hero-section .hero-floating-card { max-width: 520px; }
       .hero-bg img { object-position: 0% 40%; }
-      .hero-bg::after { background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.08)); }
     }
 
     /* Hero Floating Card: white surface, 16px radius, 24px padding, shadow-xl, NO border */
