@@ -286,7 +286,7 @@
 
     /* Hero Section with 2D-scattered collage behind centered floating card */
     .hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-    .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 40%; display: block; }
     .hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.40), rgba(255,255,255,.20)); }
 
     .hero-section {
@@ -672,7 +672,7 @@
       <div class="hero-bg" aria-hidden="true">
         <picture>
           <source media="(max-width: 700px)" srcset="img/hero-fondo-sm.jpg">
-          <img src="img/hero-fondo.jpg" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+          <img src="img/hero-fondo.jpg" alt="" width="1280" height="596" fetchpriority="high" decoding="async">
         </picture>
       </div>
 
