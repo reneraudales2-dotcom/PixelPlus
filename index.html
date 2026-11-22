@@ -320,6 +320,14 @@
 
 
 
+    /* Celular y tablet: la foto va arriba y la tarjeta abajo, para que se vean las personas */
+    @media (max-width: 960px) {
+      .hero-section { align-items: flex-end; min-height: 700px; padding: 0 16px 32px; }
+      .hero-bg { bottom: auto; height: 440px; -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent); mask-image: linear-gradient(to bottom, #000 72%, transparent); }
+      .hero-bg img { object-position: 34% 25%; }
+      .hero-bg::after { background: linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.05)); }
+    }
+
     @media (min-width: 961px) {
       .hero-section { justify-content: flex-end; padding-right: 64px; }
       .hero-section .hero-floating-card { max-width: 520px; }
