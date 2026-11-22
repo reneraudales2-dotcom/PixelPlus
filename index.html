@@ -320,6 +320,13 @@
 
 
 
+    @media (min-width: 961px) {
+      .hero-section { justify-content: flex-end; padding-right: 64px; }
+      .hero-section .hero-floating-card { max-width: 520px; }
+      .hero-bg img { object-position: 0% 40%; }
+      .hero-bg::after { background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.08)); }
+    }
+
     /* Hero Floating Card: white surface, 16px radius, 24px padding, shadow-xl, NO border */
     .hero-floating-card {
       position: relative;
