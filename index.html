@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pixel Plus — Imprime tu futuro | Tegucigalpa, Honduras</title>
+  <link rel="preload" as="image" href="img/hero-fondo-sm.jpg" media="(max-width: 700px)" fetchpriority="high">
+  <link rel="preload" as="image" href="img/hero-fondo.jpg" media="(min-width: 701px)" fetchpriority="high">
   <link rel="icon" href="img/logo-icono.png">
   <meta name="description" content="Instalación de material POP, impresión digital, góndolas, señalética y rotulación, y diseño gráfico en Tegucigalpa, Honduras.">
   <!-- Fuentes de respaldo (Inter & JetBrains Mono) según especificación -->
@@ -283,6 +285,10 @@
     }
 
     /* Hero Section with 2D-scattered collage behind centered floating card */
+    .hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
+    .hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.40), rgba(255,255,255,.20)); }
+
     .hero-section {
       position: relative;
       width: 100%;
@@ -295,78 +301,13 @@
     }
 
     /* Decorative Hero Collage Layer */
-    .hero-collage {
-      position: absolute;
-      inset: 0;
-      max-width: 1360px;
-      margin: 0 auto;
-      pointer-events: none;
-      z-index: 1;
-    }
 
-    .collage-piece {
-      position: absolute;
-      padding: var(--spacing-16);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-radius: var(--radius-sm);
-    }
 
-    .collage-piece.p1 {
-      width: 220px;
-      height: 260px;
-      background-color: var(--color-terracota);
-      top: 40px;
-      left: 4%;
-      transform: rotate(-4deg);
-    }
 
-    .collage-piece.p2 {
-      width: 240px;
-      height: 190px;
-      background-color: var(--color-navy);
-      bottom: 48px;
-      left: 8%;
-      transform: rotate(3deg);
-    }
 
-    .collage-piece.p3 {
-      width: 230px;
-      height: 250px;
-      background-color: var(--color-orange);
-      top: 32px;
-      right: 5%;
-      transform: rotate(4deg);
-    }
 
-    .collage-piece.p4 {
-      width: 250px;
-      height: 200px;
-      background-color: var(--color-sky);
-      bottom: 40px;
-      right: 7%;
-      transform: rotate(-3deg);
-    }
 
     /* Branded Conic-Gradient Decorative Ring */
-    .decorative-ring {
-      position: absolute;
-      top: 64px;
-      left: 24%;
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: conic-gradient(
-        from 0deg,
-        var(--color-navy) 0deg 18deg,
-        transparent 18deg 180deg,
-        var(--color-terracota) 180deg 198deg,
-        transparent 198deg 360deg
-      );
-      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
-      mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
-    }
 
     .mono-tag {
       font-family: var(--font-figmamono);
@@ -377,11 +318,7 @@
       text-transform: uppercase;
     }
 
-    .collage-piece { overflow: hidden; }
-    .collage-piece img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .collage-piece:has(img) .mono-tag { display: none; }
 
-    .collage-piece.p1 .mono-tag, .collage-piece.p2 .mono-tag { color: var(--color-paper-white); }
 
     /* Hero Floating Card: white surface, 16px radius, 24px padding, shadow-xl, NO border */
     .hero-floating-card {
@@ -701,9 +638,6 @@
       .gallery-grid {
         grid-template-columns: 1fr;
       }
-      .collage-piece {
-        opacity: 0.35;
-      }
     }
   </style>
 </head>
@@ -734,28 +668,12 @@
   <!-- Hero Section -->
   <main>
     <section class="hero-section">
-      <!-- Collage con productos reales de la cuenta -->
-      <div class="hero-collage" aria-hidden="true">
-        <div class="collage-piece p1">
-          <img src="img/hero-banner.jpg" alt="Banner roll up" width="480" height="600" decoding="async" fetchpriority="high" onerror="this.remove()">
-          <span class="mono-tag">Banner roll up</span>
-          <span class="mono-tag">Estructura roll up</span>
-        </div>
-        <div class="collage-piece p2">
-          <img src="img/hero-letrero.jpg" alt="Letrero de acera" width="480" height="600" decoding="async" fetchpriority="high" onerror="this.remove()">
-          <span class="mono-tag">Letrero de acera</span>
-          <span class="mono-tag">20.5 × 34.5 pulg.</span>
-        </div>
-        <div class="collage-piece p3">
-          <img src="img/hero-gondola.jpg" alt="Góndola promocional" width="480" height="600" decoding="async" fetchpriority="high" onerror="this.remove()">
-          <span class="mono-tag">Góndola promocional</span>
-          <span class="mono-tag">1.50 × 1 × 0.40 m</span>
-        </div>
-        <div class="collage-piece p4">
-          <img src="img/hero-tazas.jpg" alt="Tazas con grabado UV-DTF" width="480" height="600" decoding="async" fetchpriority="high" onerror="this.remove()">
-          <span class="mono-tag">Tazas UV-DTF</span>
-          <span class="mono-tag">Con tu logo</span>
-        </div>
+      <!-- Fondo: foto del equipo, ligeramente desenfocada -->
+      <div class="hero-bg" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 700px)" srcset="img/hero-fondo-sm.jpg">
+          <img src="img/hero-fondo.jpg" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+        </picture>
       </div>
 
       <!-- Centered Floating Card -->
