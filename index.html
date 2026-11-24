@@ -129,9 +129,11 @@
     .brand-mark img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     :focus-visible { outline: 2px solid var(--color-navy); outline-offset: 2px; }
 
-    .clients-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 32px; }
-    .client-logo { aspect-ratio: 3 / 2; border: 1px solid var(--color-soft-mist); border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 16px; font-family: var(--font-figmamono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-graphite); text-align: center; }
-    .client-logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(1); opacity: 0.75; transition: filter .2s, opacity .2s; }
+    .clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+    .client-logo { aspect-ratio: 3 / 2; border: 1px solid var(--color-soft-mist); border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 16px; font-family: var(--font-figmamono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-graphite); text-align: center; }
+    .client-logo img { display: none; max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(1); opacity: 0.75; transition: filter .2s, opacity .2s; }
+    .client-logo.has-logo img { display: block; }
+    .client-logo.has-logo .client-name { display: none; }
     .client-logo:hover img { filter: none; opacity: 1; }
     .client-logo.placeholder { border-style: dashed; color: #6b6b6b; }
     @media (max-width: 900px) { .clients-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -867,18 +869,30 @@
       {"id": "20", "title": "Vinil DTF", "caption": "Vinil DTF para personalizar tus productos con tu logo o diseño.", "category": "promocionales", "detail": "Con tu logo", "tint": "#f7efe9", "code": "Promocionales", "imageUrl": "img/vinil-dtf.jpeg", "permalink": "https://www.instagram.com/pixelplushn/"}
     ];
 
-    /* Clientes: agrega el logo en img/clientes/ y escribe su ruta en "logo". Sin logo se muestra el nombre. */
+    /* Clientes: se muestra el nombre. Al subir el logo a img/clientes/ con el nombre de "file",
+       el logo aparece y el texto se oculta solo. Si tu logo es .jpg o .svg, cambia la extensión en "file". */
     const clients = [
-      { name: "Ceteco", logo: "img/clientes/ceteco.png" },
-      { name: "Tu logo aquí", logo: "", placeholder: true },
-      { name: "Tu logo aquí", logo: "", placeholder: true },
-      { name: "Tu logo aquí", logo: "", placeholder: true },
-      { name: "Tu logo aquí", logo: "", placeholder: true },
-      { name: "Tu logo aquí", logo: "", placeholder: true }
+      { name: "Ceteco", file: "ceteco.png" },
+      { name: "Mall El Dorado", file: "mall-el-dorado.png" },
+      { name: "CDE MIPYME Región Lempa", file: "cde-mipyme-region-lempa.png" },
+      { name: "Fresh Berries", file: "fresh-berries.png" },
+      { name: "Condimentos La Típica", file: "condimentos-la-tipica.png" },
+      { name: "Industria Pinares", file: "industria-pinares.png" },
+      { name: "BCD Travel", file: "bcd-travel.png" },
+      { name: "Innovando LLC", file: "innovando-llc.png" },
+      { name: "Escape Room", file: "escape-room.png" },
+      { name: "Publitechnologies", file: "publitechnologies.png" },
+      { name: "Softland", file: "softland.png" },
+      { name: "Redes", file: "redes.png" },
+      { name: "Ediciones Ramsés", file: "ediciones-ramses.png" },
+      { name: "Proyecto Aldea Global", file: "proyecto-aldea-global.png" },
+      { name: "Medimed HN", file: "medimed-hn.png" },
+      { name: "Central Pointe Christian Academy", file: "central-pointe-christian-academy.png" }
     ];
     document.getElementById('clients-grid').innerHTML = clients.map(c => `
-      <div class="client-logo${c.placeholder ? ' placeholder' : ''}">
-        ${c.logo ? `<img src="${c.logo}" alt="${c.name}" onerror="this.outerHTML='${c.name}'">` : c.name}
+      <div class="client-logo">
+        <span class="client-name">${c.name}</span>
+        <img src="img/clientes/${c.file}" alt="${c.name}" loading="lazy" onload="this.parentNode.classList.add('has-logo')" onerror="this.remove()">
       </div>`).join('');
 
     const gridEl = document.getElementById('instagram-grid');
